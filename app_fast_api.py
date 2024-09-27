@@ -250,10 +250,8 @@ def create_province(province: Province):
       return emps
    
    for items in resProvince:
-      if items["province_name"].lower() == province.province_name.lower():
+      if items["province_name"].lower() == province.province_name.lower() and items["region_id"] == province.region_id:
          raise HTTPException(status_code=400, detail="Province name already exists")
-      if items["region_id"] == province.region_id :
-         raise HTTPException(status_code=400, detail="Region ID already exists")
       
    db_tbl_insert_province()
    
